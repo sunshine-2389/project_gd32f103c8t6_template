@@ -1,0 +1,86 @@
+version: "4.1"
+name: gd_gd32f103c8_demo-template
+type: ARM
+deviceName: null
+packDir: null
+srcDirs:
+  - src
+  - lib
+virtualFolder:
+  name: <virtual_root>
+  files: []
+  folders: []
+dependenceList: []
+outDir: build
+miscInfo:
+  uid: 1aaa35d74a14837e25de74e4d8cf23f9
+targets:
+  Debug:
+    cppPreprocessAttrs:
+      defineList:
+        - GD32F10X_MD
+        - USE_STDPERIPH_DRIVER
+      incList:
+        - lib/cmsis
+        - lib/hal
+      libList:
+        - lib/hal/GD32F10x/Include
+    excludeList:
+      - lib/hal/GD32F10x_usbd_driver
+      - lib/hal/GD32F10x_usbfs_driver
+    toolchain: GCC
+    toolchainConfigMap:
+      GCC:
+        archExtensions: ""
+        cpuType: Cortex-M3
+        floatingPointHardware: none
+        options:
+          version: 5
+          afterBuildTasks: []
+          asm-compiler:
+            ASM_FLAGS:
+              - -ffunction-sections -fdata-sections
+          beforeBuildTasks: []
+          c/cpp-compiler:
+            CXX_FLAGS:
+              - -ffunction-sections -fdata-sections
+            C_FLAGS:
+              - -ffunction-sections -fdata-sections
+            language-c: gnu99
+            language-cpp: c++14
+            optimization: level-debug
+            warnings: all-warnings
+          global:
+            $float-abi-type: softfp
+            output-debug-info: enable
+          linker:
+            LD_FLAGS:
+              - --specs=nosys.specs
+              - --specs=nano.specs
+              - -Wl,--gc-sections
+        scatterFilePath: src/GD32F103C8T6_FLASH.ld
+        storageLayout:
+          RAM: []
+          ROM: []
+        useCustomScatterFile: true
+    uploadConfigMap:
+      JLink:
+        baseAddr: "0x08000000"
+        bin: .\build\Debug\gd_gd32f103c8_demo.hex
+        cpuInfo:
+          cpuName: GD32F103C8
+          vendor: GigaDevice
+        otherCmds: ""
+        proType: 1
+        speed: 8000
+      STLink:
+        address: "0x08000000"
+        bin: build/Debug/gd_gd32f103c8_demo-template.hex
+        elFile: None
+        optionBytes: .eide/debug.st.option.bytes.ini
+        otherCmds: ""
+        proType: SWD
+        resetMode: default
+        runAfterProgram: true
+        speed: 4000
+    uploader: STLink
