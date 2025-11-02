@@ -52,7 +52,6 @@ OF SUCH DAMAGE.
 */
 void init()
 {
-    
     /* configure systick */
     rcu_apb2_clock_config(RCU_APB2_CKAHB_DIV1);
     systick_config();
@@ -66,9 +65,12 @@ void init()
     gpio_init(GPIOB, GPIO_MODE_AF_PP, GPIO_OSPEED_50MHZ, GPIO_PIN_7);
     gpio_bit_reset(GPIOB, GPIO_PIN_7);*/
     /* configure the GPIO port */ 
-    spi1_init();
+    spi0_init();
     LCD_PROT_Init();
     LCD_Init();
+    lcd_2dp(gImage_step2bit);
+    xpt2046_gpio_spi_init();
+    
 }
 
 
@@ -79,10 +81,10 @@ int main(void)
     while(1)
     {
         gpio_bit_set(GPIOB, GPIO_PIN_7);
-        spi1_write_byte(0xAA);
+        //lcd_2dp(gImage_step2bit);
         //delay_1us(10);
         delay_1ms(50);
-        //lcd_4tdp(1, t4photo);
+        //lcd_display(16,16,1,16,byte_2bit+64);
         gpio_bit_reset(GPIOB, GPIO_PIN_7);
         delay_1ms(50);
         //delay_1us(10);

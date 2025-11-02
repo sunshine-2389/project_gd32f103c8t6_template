@@ -6,11 +6,13 @@
 #include <stdint.h>
 
 // ==== 硬件定义 ====
-#define XPT2046_SPI         SPI1
+#define XPT2046_SPI         SPI0
 #define XPT2046_CS_PORT     GPIOB
 #define XPT2046_CS_PIN      GPIO_PIN_5
 #define XPT2046_PENIRQ_PORT GPIOB
 #define XPT2046_PENIRQ_PIN  GPIO_PIN_3
+#define XPT2046_BUSY_PORT    GPIOB
+#define XPT2046_BUSY_PIN     GPIO_PIN_4
 
 
 void xpt2046_gpio_spi_init(void);

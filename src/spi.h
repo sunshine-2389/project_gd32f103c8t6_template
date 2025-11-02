@@ -23,11 +23,11 @@
 #define SPI_SET_MOSI gpio_bit_set(SPI_GPIO_PORT, SPI_MOSI_PIN)
 #define SPI_RST_MOSI gpio_bit_reset(SPI_GPIO_PORT, SPI_MOSI_PIN)
 
-void spi1_init(void);
-uint8_t spi1_write_byte(uint8_t data);
-uint8_t spi1_read_byte(void);
-void spi1_write_buffer(uint8_t *tx_buf, uint16_t len);
-void spi1_read_buffer(uint8_t *rx_buf, uint16_t len);
+void spi0_init(void);
+uint8_t spi0_write_byte(uint8_t data);
+uint8_t spi0_read_byte(void);
+void spi0_write_buffer(uint8_t *tx_buf, uint16_t len);
+void spi0_read_buffer(uint8_t *rx_buf, uint16_t len);
 
 
 #endif /* _spi_H */
